@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const AddPayment = () => {
   return (
@@ -8,4 +8,4 @@ const AddPayment = () => {
   )
 }
 
-export default AddPayment
+export default AddPayment;
