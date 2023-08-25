@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { add } from "./Store/CartSlice";
 import { useDispatch } from "react-redux";
+import Accordion from 'react-bootstrap/Accordion';
 
 
 const ProductList = () => {
@@ -36,9 +37,17 @@ const ProductList = () => {
       <Card.Text>
         {product.category}
       </Card.Text>
-          <Card.Text>
-            ${product.price}
-          </Card.Text>
+      <Card.Text>
+        ${product.price}
+       </Card.Text>
+      <Accordion>
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Description</Accordion.Header>
+        <Accordion.Body>
+          {product.description}
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
       </Card.Body>
       <Card.Footer style={{ background: 'white' }}>
       <Button variant="primary" onClick={() => addToCart(product)}>Add To Cart</Button>
