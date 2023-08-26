@@ -5,7 +5,7 @@ const AddAddress = () => {
     <div>
       <h1>AddAddress</h1>
     </div>
-  )
+  );
 }
 
-export default AddAddress
+export default AddAddress;

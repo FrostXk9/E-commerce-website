@@ -49,7 +49,7 @@ const Cart = () => {
         {cards}
       </div>
     </div>
-  )
+  );
 }
 
 export default Cart;

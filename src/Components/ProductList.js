@@ -50,7 +50,7 @@ const ProductList = () => {
     </Accordion>
       </Card.Body>
       <Card.Footer style={{ background: 'white' }}>
-      <Button variant="primary" onClick={() => addToCart(product)}>Add To Cart</Button>
+      <Button variant="primary" className="add-to-cart-btn" onClick={() => addToCart(product)}>Add To Cart</Button>
       </Card.Footer>
     </Card>
     </Card>
@@ -62,7 +62,7 @@ const ProductList = () => {
       <h1>Products</h1>
       {cards}
     </div>
-  )
+  );
 }
 }
 

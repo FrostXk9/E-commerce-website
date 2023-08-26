@@ -4,7 +4,7 @@ const DashBoard = () => {
     <div>
       <ProductList />
     </div>
-  )
+  );
 }
 
 export default DashBoard;

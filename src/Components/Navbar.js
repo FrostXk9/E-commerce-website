@@ -20,8 +20,9 @@ const NavbarLayout = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link to="/" as={Link}>Products</Nav.Link>
-                <Nav.Link to= "/cart" as={Link}><FontAwesomeIcon icon={faBagShopping} />{CartProducts.length}</Nav.Link>
+                <Nav.Link to="/" as={Link} className='icon-nav'>Products</Nav.Link>
+                <Nav.Link to= "/cart" as={Link} className='icon-nav'><FontAwesomeIcon icon={faBagShopping} />{CartProducts.length}</Nav.Link>
+                <Nav.Link to="/address" as={Link} className='icon-nav'>Register</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
