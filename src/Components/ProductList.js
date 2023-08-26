@@ -33,13 +33,17 @@ const ProductList = () => {
     <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
     </div>
     <Card.Body>
+    <div className="column">
       <Card.Title>{product.title}</Card.Title>
       <Card.Text>
+        Category : 
         {product.category}
       </Card.Text>
       <Card.Text>
+        Price : 
         ${product.price}
        </Card.Text>
+       </div>
       <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>Description</Accordion.Header>
