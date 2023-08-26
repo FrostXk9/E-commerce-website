@@ -28,7 +28,7 @@ const ProductList = () => {
       <div className="col-md-3" style={{ marginBottom: '10px' }}>
   
   <Card key={product.id} className="h-100">
-  <Card style={{ width: '20rem' }}>
+  <Card>
     <div className="text-center">
     <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
     </div>
