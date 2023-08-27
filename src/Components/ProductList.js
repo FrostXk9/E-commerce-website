@@ -22,44 +22,43 @@ const ProductList = () => {
   }
 
 
-  if(Array.isArray(products)) {
-    const cards = products.map(product => (
+if(Array.isArray(products)) {
+  const cards = products.map(product => (
 
-      <div className="col-md-3" style={{ marginBottom: '10px' }}>
-  
-  <Card key={product.id} className="h-100">
-  <Card>
-    <div className="text-center">
-    <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
-    </div>
-    <Card.Body>
-    <div className="column">
-      <Card.Title>{product.title}</Card.Title>
-      <Card.Text>
-        Category : 
-        {product.category}
-      </Card.Text>
-      <Card.Text>
-        Price : 
-        ${product.price}
-       </Card.Text>
-       </div>
-      <Accordion>
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>Description</Accordion.Header>
-        <Accordion.Body>
-          {product.description}
-        </Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
-      </Card.Body>
-      <Card.Footer style={{ background: 'white' }}>
-      <Button variant="primary" className="add-to-cart-btn" onClick={() => addToCart(product)}>Add To Cart</Button>
-      </Card.Footer>
-    </Card>
-    </Card>
-      </div>
-    ));
+   <div className="col-md-3" style={{ marginBottom: '10px' }}>
+     <Card key={product.id} className="h-100">
+       <Card>
+         <div className="text-center">
+           <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
+         </div>
+         <Card.Body>
+           <div className="column">
+             <Card.Title>{product.title}</Card.Title>
+             <Card.Text>
+               Category : 
+               {product.category}
+             </Card.Text>
+             <Card.Text>
+               Price : 
+               ${product.price}
+             </Card.Text>
+           </div>
+           <Accordion>
+             <Accordion.Item eventKey="0">
+               <Accordion.Header>Description</Accordion.Header>
+               <Accordion.Body>
+                 {product.description}
+               </Accordion.Body>
+             </Accordion.Item>
+           </Accordion>
+         </Card.Body>
+         <Card.Footer style={{ background: 'white' }}>
+           <Button variant="primary" className="add-to-cart-btn" onClick={() => addToCart(product)}>Add To Cart</Button>
+         </Card.Footer>
+       </Card>
+     </Card>
+   </div>
+));
 
   return (
     <div className="row">

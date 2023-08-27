@@ -1,6 +1,10 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +29,20 @@ const NavbarLayout = () => {
                 <Nav.Link to= "/cart" as={Link} className="icon-nav"><FontAwesomeIcon icon={faBagShopping} />{CartProducts.length}</Nav.Link>
                 <Nav.Link to="/address" as={Link} className="icon-nav">Register</Nav.Link>
               </Nav>
+              <Form inline>
+                <Row>
+                 <Col xs="auto">
+                    <Form.Control
+                      type="text"
+                      placeholder="Search"
+                     className=" mr-sm-2"
+                    />
+                 </Col>
+                  <Col xs="auto">
+                   <Button type="submit">Submit</Button>
+                  </Col>
+               </Row>
+              </Form>           
             </Navbar.Collapse>
           </Container>
         </Navbar>
