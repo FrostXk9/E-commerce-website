@@ -29,7 +29,7 @@ if(Array.isArray(products)) {
      <Card key={product.id} className="h-100">
        <Card>
          <div className="text-center">
-           <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
+           <Card.Img variant="top" src={product.image} alt={product.title} style={{ width: '100px', height: '130px' }} />
          </div>
          <Card.Body>
            <div className="column">
@@ -45,7 +45,7 @@ if(Array.isArray(products)) {
            </div>
            <Accordion>
              <Accordion.Item eventKey="0">
-               <Accordion.Header>Description</Accordion.Header>
+               <Accordion.Header>About Product</Accordion.Header>
                <Accordion.Body>
                  {product.description}
                </Accordion.Body>
