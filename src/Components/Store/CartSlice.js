@@ -27,7 +27,6 @@ reducers: {
 
 add(state, action) {
 
-
 state.push(action.payload);
 
 
@@ -37,6 +36,12 @@ state.push(action.payload);
 
 remove(state, action){
     return state.filter(item => item.id !== action.payload)
+},
+
+//Purchase items
+
+purchase(state, action) {
+    return state.push(action.payload)
 }
 
 
@@ -51,7 +56,7 @@ remove(state, action){
 // Extract the 'remove' action from the cartSlice
 
 
-export const { add, remove } = cartSlice.actions;
+export const { add, remove, purchase } = cartSlice.actions;
 
 
 // Export the cartSlice reducer

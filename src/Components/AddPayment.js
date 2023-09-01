@@ -1,11 +1,16 @@
+import { useSelector } from "react-redux";
 
 
-const AddPayment = () => {
+const CheckOut = () => {
+
+  const products = useSelector(state => state.cart);
+
+
   return (
-    <div>
+    <>
       <h1>AddPayment</h1>
-    </div>
+    </>
   );
 }
 
-export default AddPayment;
+export default CheckOut;

@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RootLayout from './Components/RootLayout';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import DashBoard from './Components/DashBoard';
 import Cart from './Components/Cart';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import AddAddress from "./Components/AddAddress";
+import AddPayment from './Components/AddPayment';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Route index element={<DashBoard />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
       <Route path="/address" element={<AddAddress />}></Route>
+      <Route path="/payment" element={<AddPayment />}></Route>
     </Route>
   ));
 
