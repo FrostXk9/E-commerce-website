@@ -24,7 +24,7 @@ const NavbarLayout = () => {
               width="140"
               height="40"
               className="d-inline-block align-top"
-              alt="React Bootstrap logo"
+              alt="Mi-store-logo"
               id="logo"
             />
           </Navbar.Brand>
