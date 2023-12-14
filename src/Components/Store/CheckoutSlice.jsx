@@ -13,7 +13,7 @@ const initialState = [];
 const cartSlice = createSlice({
 
 
-name: 'cart',
+name: 'checkout',
 
 
 initialState,
@@ -38,13 +38,6 @@ remove(state, action){
     return state.filter(item => item.id !== action.payload)
 },
 
-//Purchase items
-
-purchase(state, action) {
-    return state.push(action.payload)
-}
-
-
 }
 
 
@@ -56,7 +49,7 @@ purchase(state, action) {
 // Extract the 'remove' action from the cartSlice
 
 
-export const { add, remove, purchase } = cartSlice.actions;
+export const { add, remove } = cartSlice.actions;
 
 
 // Export the cartSlice reducer
