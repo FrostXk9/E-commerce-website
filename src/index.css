@@ -260,3 +260,8 @@ h1{
 #adList{
   list-style: none;
 }
+
+#showResults{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

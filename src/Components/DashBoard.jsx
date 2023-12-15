@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 const DashBoard = () => {
   return (
     <>
-    <div className="mt-5 d-flex justify-content-center">
+    <div className="mt-5">
     <SearchBar />
     </div>
       <ProductList />

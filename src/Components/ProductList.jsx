@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 import Card from 'react-bootstrap/Card';
-import { add } from "./Store/CartSlice";
+import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { add } from "./Store/CartSlice";
 
 
 const ProductList = () => {
@@ -45,7 +46,7 @@ const ProductList = () => {
 
         <div className="d-flex justify-content-center">
 
-          <div className="fw-bold m-1"><p id="tag"> Exclusive</p></div>
+          <div className="fw-bold m-1"><p id="tag"> <FontAwesomeIcon icon={faStar} /> </p></div>
 
           <Card.Img variant="top" src={product.image} alt={product.title} style={{ width: '100px', height: '130px' }} />
 

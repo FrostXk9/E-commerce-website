@@ -3,7 +3,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Container from 'react-bootstrap/Container';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarLayout = () => {
