@@ -59,9 +59,11 @@ function NavScrollExample() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
             <div className="text-center" id="showResults">
 
                 {/* Display filtered products */}
+
                 {searchQuery === 0 ? filteredProducts.map((product) => (
 
                     <div className="" style={{overflow: "scroll", height: "50px"}} key={product.id}>{product.title}</div>
@@ -69,25 +71,31 @@ function NavScrollExample() {
                 )) : filteredProducts.map((product) => (
 
                     <div className="" style={{overflow: "scroll", height: "50px"}} key={product.id}>
+
                         <img src={product.image} alt="" />
+
                         {product.title}
+
                     </div>
                             
-                )) ? searchQuery != 0 ? filteredProducts.map((product) => (
+                )) ? searchQuery.length !== 0 ? filteredProducts.map((product) => (
+                    // initially returns only this result
 
                     <div className="container-fluid" key={product.id}>
+
                         <div className="d-flex justify-content-center">
 
                         <img src={product.image} alt="" style={{ width: '100px', height: '130px'}} />
 
                         </div>
+
                         <div className="fs-6" style={{overflow: "scroll", maxHeight:"45px"}}>
 
                         {product.title}
 
                         </div>
+
                     </div> 
-                    // initially returns only this result
                             
                 )) : console.log("Search fired!") : console.log("empty?")}
 

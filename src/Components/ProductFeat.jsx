@@ -13,7 +13,7 @@ const ProductFeat = () => {
              <Nav.Link to="/shop" as={Link} className='fw-bold text-end '>&lsaquo; Go back</Nav.Link>
             <div className="text-center">Details of product {id}</div>
             <div className="text-center">{title}</div>
-            <div className="text-center">{price}</div>
+            <div className="text-center">${price}</div>
         </div>
     </div>
     </>

@@ -57,15 +57,11 @@ const Cart = () => {
                {product.title}
 
               </Card.Title>
-              <Card.Text>
+              <Card.Text className="d-flex justify-content-center">
                 
-              <div className="dec-inc-container">
-
                 <button className="btn-quantity-decrement" onClick={() => decrement(1)}>-</button>
                 <span>{count}</span>
                 <button className="btn-quantity-increment" onClick={() => increment(1)}>+</button>
-
-              </div>
 
               </Card.Text>
 

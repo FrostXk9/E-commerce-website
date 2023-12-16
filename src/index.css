@@ -54,7 +54,7 @@ h1{
   grid-template-columns: repeat(3, 1fr);
 }
 
-.cart-img, .dec-inc-container{
+.cart-img{
   display: flex;
   justify-content: center;
 }
@@ -237,19 +237,18 @@ h1{
 
 .rating input {
   display: none;
+  padding-top: 10px;
 }
 
 .rating label {
   float: right;
-  cursor: pointer;
   color: var(--alternateWhiteColor);
-  transition: color 0.3s;
   color:  var(--ratingStarColor);
 }
 
 .rating label:before {
   content: '\2605';
-  font-size: 20px;
+  font-size: 0.69rem;
 }
 
  label {
@@ -264,4 +263,10 @@ h1{
 #showResults{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+#ic:hover{
+  color: var(--originalRed);
+  transition: all 0.33s ease-in-out, width;
+  cursor: pointer;
 }

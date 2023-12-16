@@ -8,7 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { add } from "./Store/CartSlice";
 
 
@@ -34,7 +35,18 @@ const ProductList = () => {
       </Button>
     }
   }
+  
 
+  const handleRating = (num) => {
+    for(let i of products){
+      if(i.rating.rate > num){
+        return <span>{num}</span>
+      }
+      //  else if(!num[i.rating.rate]){
+      //   return <small>not rated</small>
+      // }
+    }
+  }
 
 
   if(Array.isArray(products)) {
@@ -46,7 +58,23 @@ const ProductList = () => {
 
         <div className="d-flex justify-content-center">
 
-          <div className="fw-bold m-1"><p id="tag"> <FontAwesomeIcon icon={faStar} /> </p></div>
+          <div className="fw-bold m-1">
+
+            <div id="tag">
+
+              {handleRating(product.rating.rate)} 
+
+              <div className="rating">
+
+                <input value="1" name="rating" id="starOne" type="radio" />
+
+                <label htmlFor="starOne"></label>
+
+              </div>
+
+            </div>
+
+          </div>
 
           <Card.Img variant="top" src={product.image} alt={product.title} style={{ width: '100px', height: '130px' }} />
 
@@ -58,34 +86,6 @@ const ProductList = () => {
 
             <Card.Title className="fs-6 fw-normal">{product.title}</Card.Title>
 
-            <Card.Subtitle>
-
-              <div className="rating">
-
-                <input value="5" name="rating" id="starFive" type="radio" />
-
-                <label htmlFor="starFive"></label>
-
-                <input value="4" name="rating" id="starFour" type="radio" />
-
-                <label htmlFor="starFour"></label>
-
-                <input value="3" name="rating" id="starThree" type="radio" />
-
-                <label htmlFor="starThree"></label>
-
-                <input value="2" name="rating" id="starTwo" type="radio" />
-
-                <label htmlFor="starTwo"></label>
-
-                <input value="1" name="rating" id="starOne" type="radio" />
-
-                <label htmlFor="starOne"></label>
-
-              </div>
-
-            </Card.Subtitle>
-
             <Card.Text className="fs-6">
 
               Price : 
@@ -93,39 +93,51 @@ const ProductList = () => {
 
             </Card.Text>
 
-          </div>
-            <Card.Text className="d-flex justify-content-end mt-1">
-              <Nav.Link to={`/shop/${product.id}/${product.title}/${product.price}`} as={Link} ><Button className="btn bg-dark rounded-2"><FontAwesomeIcon icon={faEye} /></Button></Nav.Link>
+            <Card.Text className="fs-6">
+              
+              <span className="bg-info px-2 shadow text-center">Available in store: {product.rating.count}</span>
+
             </Card.Text>
 
-        </Card.Body>
-         
-        <Card.Footer style={{ background: 'white' }}>
+          </div>
 
+          <Card.Text className="d-flex justify-content-evenly mt-1">
+
+            <Nav.Link to={`/shop/${product.id}/${product.title}/${product.price}`} as={Link} >
+
+              <FontAwesomeIcon icon={faEye} />
+
+            </Nav.Link>
+
+            <FontAwesomeIcon icon={faHeart} id="ic"/>
+
+          </Card.Text>
+
+        </Card.Body>
+            
+        <Card.Footer style={{ background: 'white' }}>
           {!cart.some(item => item.id === product.id) ? (
             <Button
-             variant="dark"
-             className="add-to-cart-btn" 
-             onClick={() => addToCart(product)}>
-              
+              variant="dark"
+              className="add-to-cart-btn" 
+              onClick={() => addToCart(product)}>
+                  
               <FontAwesomeIcon icon={faShoppingCart} />
-              Add To Cart
+                Add To Cart
 
-             </Button> ) : (
-            <Button className="add-to-cart-btn" variant="success">
+              </Button> ) : (
+              <Button className="add-to-cart-btn" variant="success">
 
-              <FontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faCheck} />
 
-              Added to Cart
+                Added to Cart
 
-            </Button>
-          )}
+              </Button>
+            )}
         </Card.Footer>
 
       </Card>
-
     </div>
-
   ));
 
   return (
@@ -139,7 +151,7 @@ const ProductList = () => {
 
     </div>
   );
-} else if (typeof products === "undefined"){
+} else if (typeof products === "undefined" || products.length === 0){
   console.log("ohk")
   return <div className="mt-5 container"><h1>Loading....</h1></div>
 }}
