@@ -13,7 +13,7 @@ const initialState = [];
 const cartSlice = createSlice({
 
 
-name: 'checkout',
+name: 'favs',
 
 
 initialState,
@@ -25,7 +25,7 @@ reducers: {
 // Add an item to the cart
 
 
-add(state, action) {
+addFavourite(state, action) {
 
 state.push(action.payload);
 
@@ -34,7 +34,7 @@ state.push(action.payload);
 
 // Remove an item from the cart
 
-remove(state, action){
+removeFavourite(state, action){
     return state.filter(item => item.id !== action.payload)
 },
 
@@ -49,7 +49,7 @@ remove(state, action){
 // Extract the 'remove' action from the cartSlice
 
 
-export const { add, remove } = cartSlice.actions;
+export const { addFavourite, removeFavourite } = cartSlice.actions;
 
 
 // Export the cartSlice reducer

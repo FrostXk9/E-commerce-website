@@ -40,13 +40,19 @@ function NavScrollExample() {
     }
 
     return (
-         <>
+        <>
             <Navbar expand="lg" className="bg-white mt-5">
+
                 <Container fluid>
-                    <Navbar.Brand href="#"><img src={storeLogo.logo} alt={storeLogo.logoAlt} id="imglogo" style={{height: "41px", width: "200px" , marginTop: "5px"}}/></Navbar.Brand>
+                    
+                    {/* <Navbar.Brand href="#"><img src={storeLogo.logo} alt={storeLogo.logoAlt} id="imglogo" style={{height: "41px", width: "200px" , marginTop: "5px"}}/></Navbar.Brand> */}
+
                     <Navbar.Toggle aria-controls="navbarScroll" />
+
                     <Navbar.Collapse id="navbarScroll">
+
                         <Form className="d-flex mt-2">
+
                             <Form.Control
                                 type="search"
                                 placeholder="Search"
@@ -55,9 +61,13 @@ function NavScrollExample() {
                                 value={searchQuery}
                                 onChange={(e) => handleSearch(e.target.value)}
                             />
+
                         </Form>
+
                     </Navbar.Collapse>
+
                 </Container>
+
             </Navbar>
 
             <div className="text-center" id="showResults">
@@ -66,13 +76,17 @@ function NavScrollExample() {
 
                 {searchQuery === 0 ? filteredProducts.map((product) => (
 
-                    <div className="" style={{overflow: "scroll", height: "50px"}} key={product.id}>{product.title}</div>
+                    <div className="" style={{overflow: "scroll", height: "50px"}} key={product.id}>
+
+                        {product.title}
+
+                    </div>
 
                 )) : filteredProducts.map((product) => (
 
                     <div className="" style={{overflow: "scroll", height: "50px"}} key={product.id}>
 
-                        <img src={product.image} alt="" />
+                        <img src={product.image} alt={product.category} />
 
                         {product.title}
 
@@ -85,17 +99,17 @@ function NavScrollExample() {
 
                         <div className="d-flex justify-content-center">
 
-                        <img src={product.image} alt="" style={{ width: '100px', height: '130px'}} />
+                         <img src={product.image} alt="" className='media-img'/>
 
                         </div>
 
-                        <div className="fs-6" style={{overflow: "scroll", maxHeight:"45px"}}>
+                        <div className="small" style={{overflow: "scroll", maxHeight:"45px"}}>
 
-                        {product.title}
+                         {product.title}
 
                         </div>
 
-                    </div> 
+                    </div>
                             
                 )) : console.log("Search fired!") : console.log("empty?")}
 

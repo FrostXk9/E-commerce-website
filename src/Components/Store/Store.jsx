@@ -5,7 +5,7 @@ import CheckoutSlice from "./CheckoutSlice";
 const Store = configureStore({
     reducer:{
         cart: CartSlice,
-        checkout: CheckoutSlice
+        favs: CheckoutSlice
     }
 });
 

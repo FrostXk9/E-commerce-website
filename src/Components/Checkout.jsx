@@ -59,7 +59,7 @@ const Checkout = () => {
           <div className="dec-inc-container">
 
             <button className="btn-quantity-decrement" onClick={() => decrement(1)}>-</button>
-            <span className="pt-1">{count}</span>
+            <span className="pt-1 px-2">{count}</span>
             <button className="btn-quantity-increment" onClick={() => increment(1)}>+</button>
 
           </div>

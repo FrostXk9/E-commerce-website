@@ -8,14 +8,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-// import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Badge from "react-bootstrap/Badge"
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { add } from "./Store/CartSlice";
+import { addFavourite } from "./Store/CheckoutSlice";
 
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const [products, getProducts] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isFavourite, setFavourite] = useState(false)
+  const cart = useSelector(state => state.cart);
+  const liked = useSelector(state => state.favs)
+
+  console.log(liked)
 
   useEffect(() => {
     //fetching api
@@ -24,8 +31,13 @@ const ProductList = () => {
     .then(result => getProducts(result))
   }, []);
 
-  const [isClicked, setIsClicked] = useState(false);
-  const cart = useSelector(state => state.cart);
+
+    const handleFavourites = (item) => {
+    if(isFavourite === true || setFavourite(true) === dispatch(addFavourite(item))){
+      console.log(addFavourite(item));
+      return <FontAwesomeIcon icon={faHeart} style={{color:"red"}}/>
+    }
+    }
 
 
   const addToCart = (product) =>{
@@ -42,12 +54,27 @@ const ProductList = () => {
       if(i.rating.rate > num){
         return <span>{num}</span>
       }
-      //  else if(!num[i.rating.rate]){
-      //   return <small>not rated</small>
-      // }
     }
   }
+  const watchProductCount = (ev) => {
+    if(ev < 200){
+      return <span className="text-danger fw-bold">{ev}</span>
+    } else if (ev < 300){
+      return <span className="text-warning fw-bold">{ev}</span>
+    } else if (ev > 300){
+      return <span className="text-success fw-bold">{ev}</span>
+    }
+}
 
+  const handlePopularity = (value) => {
+    for(let x of products){
+      if(x.rating.rate <= 3 || value < 3) {
+        return <span>Popular</span>
+      } else if(x.rating.rate >= 3 || value > 3){
+        return <span>Very Popular</span>
+      }
+    }
+  }
 
   if(Array.isArray(products)) {
   const cards = products.map(product => (
@@ -60,19 +87,13 @@ const ProductList = () => {
 
           <div className="fw-bold m-1">
 
-            <div id="tag">
-
-              {handleRating(product.rating.rate)} 
-
+          <Badge bg="dark">
+                {handleRating(product.rating.rate)}
               <div className="rating">
-
                 <input value="1" name="rating" id="starOne" type="radio" />
-
                 <label htmlFor="starOne"></label>
-
               </div>
-
-            </div>
+            </Badge>
 
           </div>
 
@@ -93,13 +114,15 @@ const ProductList = () => {
 
             </Card.Text>
 
-            <Card.Text className="fs-6">
-              
-              <span className="bg-info px-2 shadow text-center">Available in store: {product.rating.count}</span>
+          </div>
 
+          <Card.Text className="fs-6 d-flex justify-content-center">
+              <span className="px-2 text-center">Available in store: {watchProductCount(product.rating.count)}</span>
             </Card.Text>
 
-          </div>
+          <Card.Text className="text-center">
+          {handlePopularity(product.rating.rate)}
+          </Card.Text>
 
           <Card.Text className="d-flex justify-content-evenly mt-1">
 
@@ -109,7 +132,9 @@ const ProductList = () => {
 
             </Nav.Link>
 
-            <FontAwesomeIcon icon={faHeart} id="ic"/>
+            {!isFavourite === true ? (<span onClick={() => handleFavourites()}><FontAwesomeIcon icon={faHeart}/></span>) : (
+              <FontAwesomeIcon icon={faHeart} style={{color:"red"}}/>
+            )}
 
           </Card.Text>
 
@@ -152,7 +177,7 @@ const ProductList = () => {
     </div>
   );
 } else if (typeof products === "undefined" || products.length === 0){
-  console.log("ohk")
+  console.log("undefined!")
   return <div className="mt-5 container"><h1>Loading....</h1></div>
 }}
 

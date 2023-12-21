@@ -3,10 +3,13 @@ import SearchBar from "./SearchBar";
 const DashBoard = () => {
   return (
     <>
-    <div className="mt-5">
+    <div className="mt-5" id="s-bar">
     <SearchBar />
     </div>
+      {/* <ProductList /> */}
+      <div className="for-media">
       <ProductList />
+      </div>
     </>
   );
 }
