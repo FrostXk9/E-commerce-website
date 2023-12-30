@@ -13,27 +13,37 @@ const Cart = () => {
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
+  const [productQuantities, setProductQuantities] = useState({});
 
 
   const removeFromCart = (id) => {
     //dispatches a remove action 
     dispatch(remove(id));
+
+    // setProductQuantities((prevQuantities) => {
+    //   const updatedQuantities = { ...prevQuantities };
+    //   delete updatedQuantities[id];
+    //   return updatedQuantities;
+    // });
   }
 
   // Product Quantity
-  const [count, setCount ]= useState(0);
 
-  function increment(quantity) {
-    setCount(CurrentCount => {
-      return CurrentCount + quantity
-    });
-  }
+  // const increment = (productId) => {
+  //   setProductQuantities((prevQuantities) => ({
+  //     ...prevQuantities,
+  //     [productId]: (prevQuantities[productId] || 0) + 1,
+  //   }));
+  // };
 
-  function decrement(quantity) {
-    setCount(CurrentCount => {
-      return CurrentCount - quantity
-    });
-  }
+  // const decrement = (productId) => {
+  //   if (productQuantities[productId] > 0) {
+  //     setProductQuantities((prevQuantities) => ({
+  //       ...prevQuantities,
+  //       [productId]: prevQuantities[productId] - 1,
+  //     }));
+  //   }
+  // };
 
   const cards = products.map(product => (
     <div key={product.id} className="Cart-card" style={{marginBottom : '10px'}}>
@@ -57,16 +67,18 @@ const Cart = () => {
                {product.title}
 
               </Card.Title>
+{/* 
               <Card.Text className="d-flex justify-content-center">
                 
-                <button className="btn-quantity-decrement" onClick={() => decrement(1)}>-</button>
-                <span>{count}</span>
-                <button className="btn-quantity-increment" onClick={() => increment(1)}>+</button>
+              <button className="btn-quantity-decrement" onClick={() => decrement(product.id)}>-</button>
 
-              </Card.Text>
+               <span>{productQuantities[product.id] || 0}</span>
+
+              <button className="btn-quantity-increment" onClick={() => increment(product.id)}>+</button>
+
+              </Card.Text> */}
 
             </Card.Body>
-
 
             <Card.Footer className="cart-footer">
 
@@ -108,3 +120,4 @@ const Cart = () => {
 
 }
 export default Cart;
+

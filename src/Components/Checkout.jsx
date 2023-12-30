@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useState } from "react";
+// import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Checkout = () => {
 
-  const [count, setCount ]= useState(0);
+  // const [count, setCount ]= useState(0);
 
   const productValue = useSelector(state => state.cart);
 
@@ -25,20 +25,28 @@ const Checkout = () => {
     return productCategory;
   }
 
-  function increment(quantity) {
-    setCount(CurrentCount => {
-      return CurrentCount + quantity
-    });
-  }
+  // const iterateThroughPrice = () => {
+  //   let p = 0
+  //   for(const i of productValue){
+  //     p += i.price
+  //   }
+  //   return p
+  // }
 
-  function decrement(quantity) {
-    setCount(CurrentCount => {
-      if(CurrentCount - quantity <= 0){
-        return 0
-      }
-      return CurrentCount - quantity
-    });
-  }
+  // function increment(quantity) {
+  //   setCount(CurrentCount => {
+  //     return CurrentCount + quantity
+  //   });
+  // }
+
+  // function decrement(quantity) {
+  //   setCount(CurrentCount => {
+  //     if(CurrentCount - quantity <= 0){
+  //       return 0
+  //     }
+  //     return CurrentCount - quantity
+  //   });
+  // }
 
   return (
 
@@ -56,13 +64,8 @@ const Checkout = () => {
 
           Quantity: {productValue.length}
 
-          <div className="dec-inc-container">
 
-            <button className="btn-quantity-decrement" onClick={() => decrement(1)}>-</button>
-            <span className="pt-1 px-2">{count}</span>
-            <button className="btn-quantity-increment" onClick={() => increment(1)}>+</button>
-
-          </div>
+          {/* <div> {iterateThroughPrice()}</div> */}
 
         </div>
 

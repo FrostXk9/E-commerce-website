@@ -11,18 +11,16 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import Badge from "react-bootstrap/Badge"
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { add } from "./Store/CartSlice";
-import { addFavourite } from "./Store/CheckoutSlice";
+// import { addFavourite } from "./Store/CheckoutSlice";
 
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const [products, getProducts] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-  const [isFavourite, setFavourite] = useState(false)
+  // const [isFavourite, setFavourite] = useState(false)
   const cart = useSelector(state => state.cart);
-  const liked = useSelector(state => state.favs)
-
-  console.log(liked)
+  // const liked = useSelector(state => state.favs)
 
   useEffect(() => {
     //fetching api
@@ -32,12 +30,12 @@ const ProductList = () => {
   }, []);
 
 
-    const handleFavourites = (item) => {
-    if(isFavourite === true || setFavourite(true) === dispatch(addFavourite(item))){
-      console.log(addFavourite(item));
-      return <FontAwesomeIcon icon={faHeart} style={{color:"red"}}/>
-    }
-    }
+    // const handleFavourites = (id) => {
+    // if(isFavourite === true || setFavourite(true) === dispatch(addFavourite(id))){
+    //   console.log(addFavourite(id));
+    //   return <FontAwesomeIcon icon={faHeart} style={{color:"red"}}/>
+    // }
+    // }
 
 
   const addToCart = (product) =>{
@@ -69,9 +67,9 @@ const ProductList = () => {
   const handlePopularity = (value) => {
     for(let x of products){
       if(x.rating.rate <= 3 || value < 3) {
-        return <span>Popular</span>
+        return <span>Popular <FontAwesomeIcon icon={faHeart} style={{color:"black"}}/></span>
       } else if(x.rating.rate >= 3 || value > 3){
-        return <span>Very Popular</span>
+        return <span>Very Popular <FontAwesomeIcon icon={faHeart} style={{color:"red"}}/></span>
       }
     }
   }
@@ -107,14 +105,14 @@ const ProductList = () => {
 
             <Card.Title className="fs-6 fw-normal">{product.title}</Card.Title>
 
-            <Card.Text className="fs-6">
+
+          </div>
+            <Card.Text className="fs-6 d-flex justify-content-center">
 
               Price : 
               ${product.price}
 
             </Card.Text>
-
-          </div>
 
           <Card.Text className="fs-6 d-flex justify-content-center">
               <span className="px-2 text-center">Available in store: {watchProductCount(product.rating.count)}</span>
@@ -131,10 +129,6 @@ const ProductList = () => {
               <FontAwesomeIcon icon={faEye} />
 
             </Nav.Link>
-
-            {!isFavourite === true ? (<span onClick={() => handleFavourites()}><FontAwesomeIcon icon={faHeart}/></span>) : (
-              <FontAwesomeIcon icon={faHeart} style={{color:"red"}}/>
-            )}
 
           </Card.Text>
 
