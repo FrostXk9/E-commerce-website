@@ -45,7 +45,7 @@ function NavScrollExample() {
 
                 <Container fluid>
                     
-                    {/* <Navbar.Brand href="#"><img src={storeLogo.logo} alt={storeLogo.logoAlt} id="imglogo" style={{height: "41px", width: "200px" , marginTop: "5px"}}/></Navbar.Brand> */}
+                    <Navbar.Brand href="#"><img src={storeLogo.logo} alt={storeLogo.logoAlt} id="imglogo" style={{height: "41px", width: "200px" , marginTop: "5px"}}/></Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="navbarScroll" />
 
@@ -95,7 +95,7 @@ function NavScrollExample() {
                 )) ? searchQuery.length !== 0 ? filteredProducts.map((product) => (
                     // initially returns only this result
 
-                    <div className="container-fluid" key={product.id}>
+                    <div className="container-fluid bg-white" key={product.id}>
 
                         <div className="d-flex justify-content-center">
 
@@ -106,6 +106,11 @@ function NavScrollExample() {
                         <div className="small" style={{overflow: "scroll", maxHeight:"45px"}}>
 
                          {product.title}
+
+                        </div>
+                        <div className="small">
+
+                         ${product.price}
 
                         </div>
 

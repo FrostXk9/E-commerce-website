@@ -14,7 +14,7 @@ const Checkout = () => {
     for (const item of productValue) {
       totalPrice += item.price;
     }
-    return totalPrice;
+    return totalPrice.toFixed(2);
   };
 
   const iterateThroughItemNames = () => {

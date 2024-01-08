@@ -14,7 +14,7 @@ const NavbarLayout = () => {
   return (
     <>
     
-      <Navbar expand="lg" className="" id="navbar">
+      <Navbar expand="lg" id="navbar">
           
         <Nav>
           <Navbar.Brand href="/">
@@ -38,7 +38,7 @@ const NavbarLayout = () => {
 
             <Nav.Link to= "/about" as={Link} className="icon-nav" id="navTop">
 
-              About us
+              About
 
             </Nav.Link>
 
